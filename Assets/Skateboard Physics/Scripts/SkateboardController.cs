@@ -109,6 +109,7 @@ public class SkateboardController : MonoBehaviour
     {
         if (!m_onSurface)
             return;
+
         if (_isDragging)
         {
             // Store the position where the drag ends
@@ -117,17 +118,27 @@ public class SkateboardController : MonoBehaviour
             // Calculate the drag direction
             Vector3 dragDirection = _releasePosition - _startDragPosition;
 
-            // Convert the drag direction to world space
-            //Vector3 worldDirection = new Vector3(0, 0, dragDirection.y);
-            //Vector3 worldDirection = new Vector3(dragDirection.x, 0, dragDirection.y);
+            // Convert the drag direction to world space (you may need to adjust this based on your camera orientation)
+            Vector3 worldDirection = m_skateboard.forward * -dragDirection.y;
 
+            // Calculate the magnitude of the force
+            float forceMagnitude = worldDirection.magnitude * m_FwdForce;
 
-            // Apply force in the opposite direction of the drag
-            //m_rigidbody.AddForce(-worldDirection * m_FwdForce);
-            m_rigidbody.AddForce(m_skateboard.forward * -dragDirection.y * m_FwdForce);
+            // Cap the force to a maximum value
+            float maxForce = 400f; // Replace this with your desired maximum force value
+            if (forceMagnitude > maxForce)
+            {
+                // Scale the direction vector to maintain direction but cap the force
+                worldDirection = worldDirection.normalized * maxForce;
+            }
 
+            // Apply the force
+            m_rigidbody.AddForce(worldDirection);
+
+            Debug.Log($"Force applied: {worldDirection} (magnitude: {worldDirection.magnitude})");
             _isDragging = false;
         }
     }
+
 
 }
