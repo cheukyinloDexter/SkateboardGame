@@ -13,7 +13,7 @@ public class SkateboardController : MonoBehaviour
     private Vector3 m_surfaceNormal = new Vector3();
     private Vector3 m_collisionPoint = new Vector3();
     public bool m_useRaycast = true;
-    private bool m_onSurface;
+    public bool m_onSurface;
     private Collision m_surfaceCollisionInfo;
     private Rigidbody m_rigidbody;
 
@@ -118,14 +118,13 @@ public class SkateboardController : MonoBehaviour
             Vector3 dragDirection = _releasePosition - _startDragPosition;
 
             // Convert the drag direction to world space
-            Vector3 worldDirection = new Vector3(0, 0, dragDirection.y);
+            //Vector3 worldDirection = new Vector3(0, 0, dragDirection.y);
             //Vector3 worldDirection = new Vector3(dragDirection.x, 0, dragDirection.y);
 
 
             // Apply force in the opposite direction of the drag
-            m_rigidbody.AddForce(-worldDirection * m_FwdForce);
-
-            //m_rigidbody.AddForce(m_skateboard.forward * -dragDirection.y * m_FwdForce);
+            //m_rigidbody.AddForce(-worldDirection * m_FwdForce);
+            m_rigidbody.AddForce(m_skateboard.forward * -dragDirection.y * m_FwdForce);
 
             _isDragging = false;
         }
