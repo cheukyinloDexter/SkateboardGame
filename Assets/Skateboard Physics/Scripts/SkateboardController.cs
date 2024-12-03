@@ -93,6 +93,11 @@ public class SkateboardController : MonoBehaviour
         }
     }
 
+    public void Flip()
+    {
+        // rotate m_skateboard 360 degree in z axis in 1/4 of a sec
+    }
+
     void OnMouseDown()
     {
         // Store the position where the drag starts
@@ -103,6 +108,7 @@ public class SkateboardController : MonoBehaviour
     void OnMouseDrag()
     {
         // Optional: You can add visual feedback for the drag
+        // maybe add a line renderer of the trajectory
     }
 
     void OnMouseUp()

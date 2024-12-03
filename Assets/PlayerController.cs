@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
             jumpChargeTime += Time.deltaTime; // Increase charge time
             Debug.Log($"Charging jump: {jumpChargeTime}");
         }
+
+        // show the charge level in the ui
     }
 
     private void OnMouseUp()

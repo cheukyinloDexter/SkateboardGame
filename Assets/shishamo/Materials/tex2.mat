@@ -203,7 +203,7 @@ Material:
     - _Offset_Z: 0
     - _Outline_Width: 1
     - _Parallax: 0.02
-    - _RimLight: 1
+    - _RimLight: 0
     - _RimLight_FeatherOff: 0
     - _RimLight_InsideMask: 0.263
     - _RimLight_Power: 0.954
