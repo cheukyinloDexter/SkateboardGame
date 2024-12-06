@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private void OnMouseDown()
     {
         // Check if the skateboard is on the surface
-        if (m_skateboardController != null && m_skateboardController.m_onSurface)
+        if (m_skateboardController != null)
         {
             isCharging = true;
             jumpChargeTime = 0f; // Reset jump charge time
