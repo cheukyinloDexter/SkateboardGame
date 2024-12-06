@@ -23,6 +23,7 @@ public class LevelGenerator : MonoBehaviour
 
     void GenerateLevel()
     {
+        // TODO if the distace to the last obsticale is > than ?, add a higher point/item to incentivze doing the flip
         Vector3 currentPosition = startPosition;
 
         for (int i = 0; i < objectCount; i++)

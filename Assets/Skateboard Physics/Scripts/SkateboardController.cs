@@ -20,6 +20,13 @@ public class SkateboardController : MonoBehaviour
     private Vector3 _startDragPosition;
     private Vector3 _releasePosition;
     private bool _isDragging = false;
+
+    public bool IsFlipping = false; // Tracks if the skateboard is flipping
+    public float flipDuration = 0.25f; // Time taken to complete the flip
+    public float flipStartTime = 0.125f;
+    public float flipElapsedTime = 0f; // Tracks time during the flip
+    public Quaternion initialFlipRotation; // Initial rotation before flip
+    public Quaternion targetFlipRotation; // Final rotation after flip
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +74,12 @@ public class SkateboardController : MonoBehaviour
 
     void AlignToSurface()
     {
+        if (IsFlipping) // If flipping, handle the flip logic
+        {
+            HandleFlip();
+            return; // Skip surface alignment while flipping
+        }
+
         if (m_useRaycast)
         {
             var hit = new RaycastHit();
@@ -80,23 +93,60 @@ public class SkateboardController : MonoBehaviour
                 m_skateboard.localRotation = Quaternion.LerpUnclamped(m_skateboard.localRotation, localRot, m_alignSpeed * Time.fixedDeltaTime);
             }
         }
-        else
+        else if (m_onSurface)
         {
-            if (m_onSurface)
-            {
-                var localRot = Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation;
-                var euler = localRot.eulerAngles;
-                euler.y = 0;
-                localRot.eulerAngles = euler;
-                m_skateboard.localRotation = Quaternion.LerpUnclamped(m_skateboard.localRotation, localRot, m_alignSpeed * Time.fixedDeltaTime);
-            }
+            var localRot = Quaternion.FromToRotation(transform.up, m_surfaceNormal) * transform.rotation;
+            var euler = localRot.eulerAngles;
+            euler.y = 0;
+            localRot.eulerAngles = euler;
+            m_skateboard.localRotation = Quaternion.LerpUnclamped(m_skateboard.localRotation, localRot, m_alignSpeed * Time.fixedDeltaTime);
         }
     }
 
     public void Flip()
     {
-        // rotate m_skateboard 360 degree in z axis in 1/4 of a sec
+        Debug.Log("Flip");
+        IsFlipping = true;
+        flipElapsedTime = 0f;
+        initialFlipRotation = m_skateboard.localRotation;
+        targetFlipRotation = initialFlipRotation * Quaternion.Euler(0f, 0f, 360f);
     }
+
+    private void HandleFlip()
+    {
+        // Increment elapsed time
+        flipElapsedTime += Time.deltaTime;
+
+        // Wait for flipStartTime before starting the flip
+        if (flipElapsedTime < flipStartTime)
+        {
+            // If the elapsed time is less than the start time, do nothing and return
+            return;
+        }
+
+        // Normalize time value (0 to 1) after flipStartTime has passed
+        float t = (flipElapsedTime - flipStartTime) / flipDuration;
+
+        if (t >= 1f)
+        {
+            // Flip complete: Ensure it ends exactly at 360 degrees
+            m_skateboard.localRotation = Quaternion.Euler(0f, 0f, 360f);
+            IsFlipping = false;
+            flipElapsedTime = 0f;  // Reset elapsed time for future flips
+            Debug.Log("Flip done");
+        }
+        else
+        {
+            // Smoothly increment rotation on the Z-axis from 0 to 360 degrees
+            float zRotation = Mathf.Lerp(0f, 360f, t);  // Calculate the rotation from 0 to 360 degrees
+
+            // Set the skateboard's local rotation based on the calculated Z-axis rotation
+            m_skateboard.localRotation = Quaternion.Euler(0f, 0f, zRotation);
+            Debug.Log("Flipping");
+        }
+    }
+
+
 
     void OnMouseDown()
     {
@@ -134,8 +184,13 @@ public class SkateboardController : MonoBehaviour
             float maxForce = 400f; // Replace this with your desired maximum force value
             if (forceMagnitude > maxForce)
             {
-                // Scale the direction vector to maintain direction but cap the force
+                // Normalize the world direction and apply the capped magnitude
                 worldDirection = worldDirection.normalized * maxForce;
+            }
+            else
+            {
+                // Apply the scaled force if it's within the cap
+                worldDirection *= m_FwdForce;
             }
 
             // Apply the force
@@ -144,6 +199,7 @@ public class SkateboardController : MonoBehaviour
             Debug.Log($"Force applied: {worldDirection} (magnitude: {worldDirection.magnitude})");
             _isDragging = false;
         }
+
     }
 
 
