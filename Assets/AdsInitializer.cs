@@ -26,12 +26,14 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         {
             Advertisement.Initialize(_gameId, _testMode, this);
         }
+        
     }
 
 
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");
+        //RewardedAdsButton.Instance.LoadAd();
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)

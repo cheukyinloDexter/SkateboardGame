@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy any extra GameManager instances
         }
+        Time.timeScale = 1;
     }
 
     void Start()
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
             Time.timeScale = 0;
             WinScreen.active = true;
+            RewardedAdsButton.Instance.LoadAd();
         }
 
         UpdateTimerText();
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over! Resetting...");
         // Reset logic (e.g., reload the scene, reset variables, etc.)
+        Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 }
