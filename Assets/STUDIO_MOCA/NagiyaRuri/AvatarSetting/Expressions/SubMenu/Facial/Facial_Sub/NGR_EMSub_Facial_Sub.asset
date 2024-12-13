@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: NGR_EMSub_Facial_Sub
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Angry
+    icon: {fileID: 2800000, guid: 8dd74a3632a399546a7865b0dbb1ecb5, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: f766077437f4a8346a7a4530092def71, type: 2}
+    subParameters: []
+    labels: []
+  - name: Happy
+    icon: {fileID: 2800000, guid: 377b9229b54fb7e49996eb4d2205b983, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 5e4bc0b5311ae7c4882e19c27c5c30fc, type: 2}
+    subParameters: []
+    labels: []
+  - name: Hate
+    icon: {fileID: 2800000, guid: 1324aee7eb502ff42bf5840de230f5fd, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: d58da09efd1cbdc40a456c364f9e1c63, type: 2}
+    subParameters: []
+    labels: []
+  - name: Loving
+    icon: {fileID: 2800000, guid: 8a8ceb4539218fc42aca72fec2d94bd9, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 798c6dbd143db1f449508a2622d24a1c, type: 2}
+    subParameters: []
+    labels: []
+  - name: Panic
+    icon: {fileID: 2800000, guid: b7971b96fa148d74884b53d203b6fd3d, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: b6dffa68ac71c8c4f9e20d9f923222a1, type: 2}
+    subParameters: []
+    labels: []
+  - name: Sad
+    icon: {fileID: 2800000, guid: ff8c8e594e1887d4ab0a7f4ad978672f, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: ad3bbfc8c0f4e034ca084ba49150b99c, type: 2}
+    subParameters: []
+    labels: []
+  - name: Seriously
+    icon: {fileID: 2800000, guid: a87ccdbcfcae9a94fba93e2c74668128, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 3716234e5a55ec04ca3cef5484065151, type: 2}
+    subParameters: []
+    labels: []
+  - name: Smile
+    icon: {fileID: 2800000, guid: 6618d1ad63fd02e4a89c4ee11e5becdf, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: e6f1da89ad0483a4b84b4f836def7fc7, type: 2}
+    subParameters: []
+    labels: []

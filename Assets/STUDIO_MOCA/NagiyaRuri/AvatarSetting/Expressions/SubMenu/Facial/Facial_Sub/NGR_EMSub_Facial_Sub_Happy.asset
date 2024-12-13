@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: NGR_EMSub_Facial_Sub_Happy
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Happy 01
+    icon: {fileID: 2800000, guid: 377b9229b54fb7e49996eb4d2205b983, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 9
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Happy 02
+    icon: {fileID: 2800000, guid: 79bb8a721a6fcd74ab2a57b39d664768, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 10
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Happy 03
+    icon: {fileID: 2800000, guid: 759965ad10af8094a8a136304c1b2613, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 11
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Happy 04
+    icon: {fileID: 2800000, guid: fdccc7484db580142881c6273463f63b, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 12
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Happy 05
+    icon: {fileID: 2800000, guid: 101ce960566a85f41af457f1cf59c637, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 13
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Happy 06
+    icon: {fileID: 2800000, guid: d7466c6cfe1c3d346a400270be2ad07d, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 14
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []

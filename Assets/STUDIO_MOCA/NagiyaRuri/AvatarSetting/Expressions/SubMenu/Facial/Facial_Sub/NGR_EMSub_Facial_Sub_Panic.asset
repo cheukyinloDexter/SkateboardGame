@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: NGR_EMSub_Facial_Sub_Panic
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Panic 01
+    icon: {fileID: 2800000, guid: b7971b96fa148d74884b53d203b6fd3d, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 23
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Panic 02
+    icon: {fileID: 2800000, guid: cf362ea27448e354ab38ce139ccea4f8, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 24
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Panic 03
+    icon: {fileID: 2800000, guid: 09f38636766a7834e93ee922e0b1b7f4, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 25
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Panic 04
+    icon: {fileID: 2800000, guid: 0feaafa4b01c5734bba3a8534eb0abf3, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 26
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 05
+    icon: {fileID: 2800000, guid: 5553baa7234d9c445a93c608f4811981, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 27
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Panic 06
+    icon: {fileID: 2800000, guid: 80b27ec0f77ad4c46a7dc8073d970a80, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 28
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []

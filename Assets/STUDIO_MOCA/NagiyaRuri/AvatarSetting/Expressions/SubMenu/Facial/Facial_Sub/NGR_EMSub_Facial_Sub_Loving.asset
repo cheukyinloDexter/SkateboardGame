@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: NGR_EMSub_Facial_Sub_Loving
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Loving 01
+    icon: {fileID: 2800000, guid: 8a8ceb4539218fc42aca72fec2d94bd9, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 19
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Loving  02
+    icon: {fileID: 2800000, guid: 43a38cb0b0db4b347b5883ca0d244ef9, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 20
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Loving  03
+    icon: {fileID: 2800000, guid: 04085085a81ecf94e96fc846850d400f, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 21
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Loving  04
+    icon: {fileID: 2800000, guid: f78af012856d5d8468181e63ead0eef3, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 22
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []

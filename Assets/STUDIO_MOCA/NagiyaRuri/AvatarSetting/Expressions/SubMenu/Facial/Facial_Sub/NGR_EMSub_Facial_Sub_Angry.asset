@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: NGR_EMSub_Facial_Sub_Angry
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Angry 01
+    icon: {fileID: 2800000, guid: 8dd74a3632a399546a7865b0dbb1ecb5, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 02
+    icon: {fileID: 2800000, guid: 2439da8b2d7a11d429c3ce8afcadde26, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 2
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 03
+    icon: {fileID: 2800000, guid: e639d97ec98b8c548802c387063bbd98, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 3
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 04
+    icon: {fileID: 2800000, guid: 27400187f83e6b64d8aa0493310b61b2, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 4
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 05
+    icon: {fileID: 2800000, guid: a25ef73eef78b92408da9e122fa242e0, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 5
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 06
+    icon: {fileID: 2800000, guid: efb984c43377bf5459a2e5b4c2787260, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 6
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 07
+    icon: {fileID: 2800000, guid: 73e942d3c62137149955f25172d52f8f, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 7
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Angry 08
+    icon: {fileID: 2800000, guid: 188093a0ffe9c6043a73c4ff08c8ae35, type: 3}
+    type: 102
+    parameter:
+      name: Face
+    value: 8
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []

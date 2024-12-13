@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Animations.Rigging;
 using UnityEngine;
 
 public class SkateboardController : MonoBehaviour
@@ -27,6 +28,8 @@ public class SkateboardController : MonoBehaviour
     public float flipElapsedTime = 0f; // Tracks time during the flip
     public Quaternion initialFlipRotation; // Initial rotation before flip
     public Quaternion targetFlipRotation; // Final rotation after flip
+
+    [SerializeField] private Rig rig;
     // Start is called before the first frame update
     void Start()
     {
@@ -134,6 +137,7 @@ public class SkateboardController : MonoBehaviour
             IsFlipping = false;
             flipElapsedTime = 0f;  // Reset elapsed time for future flips
             Debug.Log("Flip done");
+            rig.weight = 1;
         }
         else
         {
@@ -143,6 +147,7 @@ public class SkateboardController : MonoBehaviour
             // Set the skateboard's local rotation based on the calculated Z-axis rotation
             m_skateboard.localRotation = Quaternion.Euler(0f, 0f, zRotation);
             Debug.Log("Flipping");
+            rig.weight = 0;
         }
     }
 
