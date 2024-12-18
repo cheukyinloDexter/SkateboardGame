@@ -30,6 +30,8 @@ public class SkateboardController : MonoBehaviour
     public Quaternion targetFlipRotation; // Final rotation after flip
 
     [SerializeField] private Rig rig;
+    [SerializeField] private ManageIK headIK;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,14 @@ public class SkateboardController : MonoBehaviour
     void Update()
     {
         //ProcessInputs();
+        if(!IsFlipping)
+        {
+            if (rig != null)
+            {
+                rig.weight = Mathf.MoveTowards(rig.weight, 1f, Time.deltaTime * 25f);
+                headIK.lookWeight = Mathf.MoveTowards(headIK.lookWeight, 1f, Time.deltaTime * 3f);
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -124,7 +134,9 @@ public class SkateboardController : MonoBehaviour
         if (flipElapsedTime < flipStartTime)
         {
             // If the elapsed time is less than the start time, do nothing and return
+            headIK.lookWeight = Mathf.Lerp(headIK.lookWeight, 0f, Time.deltaTime * 10f);
             return;
+
         }
 
         // Normalize time value (0 to 1) after flipStartTime has passed
@@ -137,7 +149,10 @@ public class SkateboardController : MonoBehaviour
             IsFlipping = false;
             flipElapsedTime = 0f;  // Reset elapsed time for future flips
             Debug.Log("Flip done");
-            rig.weight = 1;
+            // start setting the rig back to 1;
+
+            //rig.weight = 1;
+            //headIK.lookWeight = 1;
         }
         else
         {
@@ -147,7 +162,9 @@ public class SkateboardController : MonoBehaviour
             // Set the skateboard's local rotation based on the calculated Z-axis rotation
             m_skateboard.localRotation = Quaternion.Euler(0f, 0f, zRotation);
             Debug.Log("Flipping");
-            rig.weight = 0;
+            //rig.weight = 0;
+            rig.weight = Mathf.Lerp(rig.weight, 0f, Time.deltaTime * 15f);
+
         }
     }
 

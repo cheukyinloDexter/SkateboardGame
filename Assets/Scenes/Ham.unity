@@ -8020,6 +8020,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 656946566}
     - target: {fileID: 1599455446165423453, guid: 95c14b34064c7469abca28d905ab544d, type: 3}
+      propertyPath: headIK
+      value: 
+      objectReference: {fileID: 8987942263371656787}
+    - target: {fileID: 1599455446165423453, guid: 95c14b34064c7469abca28d905ab544d, type: 3}
       propertyPath: m_FwdForce
       value: 0.5
       objectReference: {fileID: 0}
@@ -8721,7 +8725,7 @@ GameObject:
   - component: {fileID: 1291523081}
   - component: {fileID: 1291523086}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13384,6 +13388,37 @@ Transform:
   - {fileID: 1322313211}
   m_Father: {fileID: 1756873216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2093709014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093709015}
+  m_Layer: 0
+  m_Name: LookTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093709015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093709014}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 190, z: 425}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450651716005881}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2097376366
 GameObject:
   m_ObjectHideFlags: 0
@@ -14849,6 +14884,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2093709015}
   - {fileID: 1151388028392021665}
   - {fileID: 333931142}
   - {fileID: 758876944}
@@ -15801,6 +15837,7 @@ MonoBehaviour:
   initialFlipRotation: {x: 0, y: 0, z: 0, w: 0}
   targetFlipRotation: {x: 0, y: 0, z: 0, w: 0}
   rig: {fileID: 0}
+  headIK: {fileID: 0}
 --- !u!23 &1599455447566729406
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18480,6 +18517,7 @@ GameObject:
   - component: {fileID: 8987942263371656785}
   - component: {fileID: 5670481184068376533}
   - component: {fileID: 8987942263371656786}
+  - component: {fileID: 8987942263371656787}
   m_Layer: 0
   m_Name: shishamo_0.0.0
   m_TagString: Untagged
@@ -20134,6 +20172,21 @@ MonoBehaviour:
   - m_Rig: {fileID: 656946566}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &8987942263371656787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6802112786863276462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25448faf7d7c7184ebe3c1173a5fb222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ikActive: 1
+  objectTarget: {fileID: 2093709015}
+  lookWeight: 1
 --- !u!4 &8994492632988541126
 Transform:
   m_ObjectHideFlags: 0

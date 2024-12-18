@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
                 if (jumpChargeTime >= maxChargeTime)
                 {
                     m_skateboardController.Flip();
+
                 }
             }
             // Reset charge time
