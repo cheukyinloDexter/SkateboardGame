@@ -4,12 +4,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //these are deleted when reloading the scene
     [SerializeField] private Text TimerText;
     [SerializeField] private GameObject WinScreen;
+
     [SerializeField] private float countdownTime = 30f; // Initial countdown time in seconds
     public static GameManager Instance;
-    private float currentTime;
-    private bool isGameOver = false;
+    [SerializeField] private float currentTime;
+    [SerializeField] private bool isGameOver = false;
 
     void Awake()
     {
@@ -17,7 +19,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this; // Set the singleton instance
-            DontDestroyOnLoad(gameObject); // Optional: Keep GameManager across scenes
+            //DontDestroyOnLoad(gameObject); // Optional: Keep GameManager across scenes
         }
         else
         {
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         currentTime = countdownTime;
         UpdateTimerText();
     }
@@ -45,8 +48,11 @@ public class GameManager : MonoBehaviour
             currentTime = 0;
             isGameOver = true;
             Time.timeScale = 0;
-            WinScreen.active = true;
-            RewardedAdsButton.Instance.LoadAd();
+            WinScreen.SetActive(true);
+            if (RewardedAdsButton.Instance != null)
+            {
+                RewardedAdsButton.Instance.LoadAd();
+            }
         }
 
         UpdateTimerText();
@@ -64,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         currentTime += timeToAdd;
         Debug.Log($"Added {timeToAdd} seconds. Current time: {currentTime}");
-        WinScreen.active = false;
+        WinScreen.SetActive(false);
         Time.timeScale = 1;
         isGameOver = false;
     }
@@ -75,6 +81,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over! Resetting...");
         // Reset logic (e.g., reload the scene, reset variables, etc.)
         Time.timeScale = 1;
+        currentTime = countdownTime;
+        isGameOver = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 }

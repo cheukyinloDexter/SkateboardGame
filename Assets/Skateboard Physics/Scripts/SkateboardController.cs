@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Animations.Rigging;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class SkateboardController : MonoBehaviour
 {
@@ -30,12 +31,33 @@ public class SkateboardController : MonoBehaviour
     public Quaternion targetFlipRotation; // Final rotation after flip
 
     [SerializeField] private Rig rig;
+    [SerializeField] private GameObject leftLegTarget;
+    [SerializeField] private GameObject rightLegTarget;
+
+    private TwoBoneIKConstraint leftLegIk;
+    private MultiRotationConstraint leftLegRotation;
+
+    private TwoBoneIKConstraint rightLegIk;
+    private MultiRotationConstraint rightLegRotation;
+
+
     [SerializeField] private ManageIK headIK;
+
+    // a list or targets and aim at the closest
 
     // Start is called before the first frame update
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody>();
+
+        if (leftLegTarget != null || rightLegTarget != null)
+        {
+            leftLegIk = leftLegTarget.GetComponent<TwoBoneIKConstraint>();
+            leftLegRotation = leftLegTarget.GetComponent<MultiRotationConstraint>();
+            rightLegIk = rightLegTarget.GetComponent<TwoBoneIKConstraint>();
+            rightLegRotation = rightLegTarget.GetComponent<MultiRotationConstraint>();
+
+        }
     }
 
     // Update is called once per frame
@@ -44,11 +66,22 @@ public class SkateboardController : MonoBehaviour
         //ProcessInputs();
         if(!IsFlipping)
         {
-            if (rig != null)
+            //if (rig != null)
+            //{
+            //    rig.weight = Mathf.MoveTowards(rig.weight, 1f, Time.deltaTime * 25f);
+            //    headIK.lookWeight = Mathf.MoveTowards(headIK.lookWeight, 1f, Time.deltaTime * 3f);
+            //}
+            if (leftLegIk != null)
             {
-                rig.weight = Mathf.MoveTowards(rig.weight, 1f, Time.deltaTime * 25f);
+                leftLegIk.weight = Mathf.MoveTowards(leftLegIk.weight, 1f, Time.deltaTime * 7f);
+                leftLegRotation.weight = Mathf.MoveTowards(leftLegRotation.weight, 1f, Time.deltaTime * 7f);
+
+                rightLegIk.weight = Mathf.MoveTowards(rightLegIk.weight, 1f, Time.deltaTime * 7f);
+                rightLegRotation.weight = Mathf.MoveTowards(rightLegRotation.weight, 1f, Time.deltaTime * 7f);
+
                 headIK.lookWeight = Mathf.MoveTowards(headIK.lookWeight, 1f, Time.deltaTime * 3f);
             }
+                
         }
     }
 
@@ -152,6 +185,14 @@ public class SkateboardController : MonoBehaviour
             // start setting the rig back to 1;
 
             //rig.weight = 1;
+
+            //leftLegIk.weight = 1;
+            //leftLegRotation.weight = 1;
+
+
+            //rightLegIk.weight = 1;
+            //rightLegRotation.weight = 1;
+            
             //headIK.lookWeight = 1;
         }
         else
@@ -163,7 +204,16 @@ public class SkateboardController : MonoBehaviour
             m_skateboard.localRotation = Quaternion.Euler(0f, 0f, zRotation);
             Debug.Log("Flipping");
             //rig.weight = 0;
-            rig.weight = Mathf.Lerp(rig.weight, 0f, Time.deltaTime * 15f);
+            leftLegIk.weight = Mathf.Lerp(leftLegIk.weight, 0f, Time.deltaTime * 15f);
+            leftLegRotation.weight = Mathf.Lerp(leftLegRotation.weight, 0f, Time.deltaTime * 15f);
+
+
+            rightLegIk.weight = Mathf.Lerp(rightLegIk.weight, 0f, Time.deltaTime * 15f);
+            rightLegRotation.weight = Mathf.Lerp(rightLegRotation.weight, 0f, Time.deltaTime * 15f);
+
+            headIK.lookWeight = Mathf.Lerp(headIK.lookWeight, 0f, Time.deltaTime * 15f);
+
+            //rig.weight = Mathf.Lerp(rig.weight, 0f, Time.deltaTime * 15f);
 
         }
     }
