@@ -25,12 +25,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy any extra GameManager instances
         }
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 
     void Start()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         currentTime = countdownTime;
         UpdateTimerText();
     }

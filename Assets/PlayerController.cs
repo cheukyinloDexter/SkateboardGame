@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> targets = new List<GameObject>();
     public GameObject target;
 
+    //private Transform previousTarget;
+    //private float transitionProgress = 1f; // 1 = fully reached the new target
+    //[SerializeField] private float transitionSpeed = 1f; // Adjust speed for smoother transitions
+
+
 
 
     void Start()
@@ -140,8 +145,17 @@ public class PlayerController : MonoBehaviour
         //}
         if (targets.Count >= 1)
         {
-            target = targets.OrderBy(t => Vector3.Distance(transform.position, t.transform.position)).FirstOrDefault();
-            // TODO a transition to changing targets
+            //target = targets.OrderBy(t => Vector3.Distance(transform.position, t.transform.position)).FirstOrDefault();
+            
+            GameObject newTarget = targets.OrderBy(t => Vector3.Distance(transform.position, t.transform.position)).FirstOrDefault();
+
+            if (newTarget != target)
+            {
+                //previousTarget = target != null ? target.transform : null; // Store previous target
+                //transitionProgress = 0f; // Reset transition progress
+            }
+
+            target = newTarget;
         }
         else
         {
@@ -150,24 +164,30 @@ public class PlayerController : MonoBehaviour
 
         if (leftArmIk != null && target != null)
         {
-            leftArmIk.weight = Mathf.MoveTowards(leftArmIk.weight, 1f, Time.deltaTime * 1f);
-            leftArmRotation.weight = Mathf.MoveTowards(leftArmRotation.weight, 1f, Time.deltaTime * 1f);
+            leftArmIk.weight = Mathf.MoveTowards(leftArmIk.weight, 1f, Time.deltaTime * 2f);
+            leftArmRotation.weight = Mathf.MoveTowards(leftArmRotation.weight, 1f, Time.deltaTime * 3f);
 
-            Vector3 direction = this.transform.position - target.transform.position;
-            //direction.Normalize();
-            Quaternion rotation = Quaternion.LookRotation(direction, new Vector3(0, 1, 0)) * Quaternion.AngleAxis(270, new Vector3(1, 0, 0));
-            //turns the arm upright
-            leftArmTarget.transform.rotation = rotation;// * Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
-            leftArmTarget.transform.position = target.transform.position;
+            //transitionProgress = Mathf.Clamp01(transitionProgress + Time.deltaTime * transitionSpeed);
+
+            // Get smooth transition position
+            //Vector3 startPosition = previousTarget != null ? previousTarget.position : leftArmTarget.transform.position;
+            Vector3 targetPosition = target.transform.position;
+            //leftArmTarget.transform.position = Vector3.Lerp(startPosition, targetPosition, transitionProgress);
+            leftArmTarget.transform.position = Vector3.MoveTowards(leftArmTarget.transform.position, targetPosition, Time.deltaTime * 30f);
+
+            // Get smooth transition rotation
+            //Quaternion startRotation = previousTarget != null ? previousTarget.rotation : leftArmTarget.transform.rotation;
+            Vector3 direction = transform.position - target.transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up) * Quaternion.AngleAxis(270, Vector3.right) * Quaternion.AngleAxis(90, Vector3.up);
+            leftArmTarget.transform.rotation = Quaternion.RotateTowards(leftArmTarget.transform.rotation, targetRotation, Time.deltaTime * 3600f);//turn 3600 degree in i sec
         }
         else
         {
             if (leftArmIk != null)
             {
-                leftArmIk.weight = Mathf.MoveTowards(leftArmIk.weight, 0f, Time.deltaTime * 1f);
-                leftArmRotation.weight = Mathf.MoveTowards(leftArmRotation.weight, 0f, Time.deltaTime * 1f);
+                leftArmIk.weight = Mathf.MoveTowards(leftArmIk.weight, 0f, Time.deltaTime * 2f);
+                leftArmRotation.weight = Mathf.MoveTowards(leftArmRotation.weight, 0f, Time.deltaTime * 5f);
             }
-
         }
     }
     /*    void Update()
