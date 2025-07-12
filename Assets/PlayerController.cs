@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
             //Vector3 startPosition = previousTarget != null ? previousTarget.position : leftArmTarget.transform.position;
             Vector3 targetPosition = target.transform.position;
             //leftArmTarget.transform.position = Vector3.Lerp(startPosition, targetPosition, transitionProgress);
-            leftArmTarget.transform.position = Vector3.MoveTowards(leftArmTarget.transform.position, targetPosition, Time.deltaTime * 30f);
+            leftArmTarget.transform.position = Vector3.MoveTowards(leftArmTarget.transform.position, targetPosition, Time.deltaTime * 15f);
 
             // Get smooth transition rotation
             //Quaternion startRotation = previousTarget != null ? previousTarget.rotation : leftArmTarget.transform.rotation;

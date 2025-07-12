@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ham.unity
     guid: 96a2f8b2ab988b4498d531bd3499d547
+  - enabled: 1
+    path: Assets/Scenes/levelGeneratorTest(Night).unity
+    guid: 8af5efbd8f0b6b4418d21975b98c2a0e
   m_configObjects: {}
